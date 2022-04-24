@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>ts-attribute</Title>
+			<Shortcut>tsattr</Shortcut>
+			<Description>Code snippet for TS attribute</Description>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Property type</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>tsdatatype</ID>
+					<ToolTip>TS data type</ToolTip>
+					<Default>Integer</Default>
+				</Literal>
+				<Literal>
+					<ID>property</ID>
+					<ToolTip>Property name</ToolTip>
+					<Default>MyProperty</Default>
+				</Literal>
+				<Literal>
+					<ID>field</ID>
+					<ToolTip>The variable backing this property</ToolTip>
+					<Default>myVar</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[#region $property$
+			private $type$ $field$;
+	[StructuresDialog("$property$", typeof(TSDatatype.$tsdatatype$))]
+	public $type$ $property$
+	{
+		get { return $field$;}
+		set { $field$ = value;}
+	}
+	[StructuresField("$property$")]
+	public $type$ $property$;
+	
+	//<UIControls:WpfFilterCheckBox AttributeName="$property$"/>
+	//<TextBox Text="{Binding Path=$property$}"/>
+	
+		#endregion
+	$end$]]>
+			</Code>
+			<Imports>
+				<Import>
+					<Namespace>
+						TSDatatype = Tekla.Structures.Datatype
+					</Namespace>
+				</Import>
+				<Import>
+					<Namespace>
+						Tekla.Structures.Plugins
+					</Namespace>
+				</Import>
+				<Import>
+					<Namespace>
+						Tekla.Structures.Dialog
+					</Namespace>
+				</Import>
+			</Imports>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
